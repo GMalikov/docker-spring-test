@@ -51,3 +51,7 @@ To access application first get your minikube ip:
 kubectl create configmap config-uat15 --from-file=conf\application.properties --from-file=conf\uat15\application-spec.properties
 
 kubectl describe configmaps config-uat15
+
+kubectl describe pod app-deployment-6fccfdb8f6-v2w8l
+
+kubectl logs -p app-deployment-6fccfdb8f6-v2w8l

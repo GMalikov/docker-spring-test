@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: web-uat15
-          image: ikozar22/ikozar
+          image: lemartis/docker-spring-test
           ports:
             - containerPort: 8080
           volumeMounts:

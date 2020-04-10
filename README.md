@@ -1,13 +1,15 @@
 # docker-spring-test
 
+## To run as docker container
+
 After mvn install execute
 
-$> docker build -t springapp .
+$> docker build -t docker-spring-test .
 
-Which will build an image and tag it with "springapp".
+Which will build an image and tag it with "docker-spring-test".
 
 To run image execute:
-$> docker run -p 8080:8080 springapp
+$> docker run -p 8080:8080 docker-spring-test
 
 This will run container, with port forwarding from localhost:8080 to containers 8080.
 
@@ -16,12 +18,23 @@ $> docker ps
 
 |CONTAINER ID |IMAGE| COMMAND| CREATED| STATUS| PORTS| NAMES|
 
-|e8edde6d22a2 | sprinapp| "java -jar /app.jar"| 5 minutes ago | Up 5 minutes| 0.0.0.0:8080->8080/tcp| youthful_johnson|
+|e8edde6d22a2 | docker-spring-test| "java -jar /app.jar"| 5 minutes ago | Up 5 minutes| 0.0.0.0:8080->8080/tcp| youthful_johnson|
 
-If you want to get a file with logs you need to navigate to docker daemon directory, and its location depends on OS.
-Refer to https://docs.docker.com/config/daemon/
-In general it will be:
-/var/lib/docker/containers/<container id>/<container id>-json.log
-
-Or you can obtain logs via docker command, which is preferable way to get them:
 $> docker logs $container-id
+
+
+## To run in k8s
+
+You need to deploy app ans service to get access to it.
+cd to kube folder.
+
+$> kubectl apply -f app-node-port.yaml
+$> kubectl apply -f app-deployment.yaml
+
+Application is available on port 31700. THis is being set in nodePort in app-node-port.yaml
+To access application first get your minikube ip:
+ $>minikube ip
+ 192.168.64.2
+ 
+ then open $your-minikube-ip:192.168.64.2/greeting in browser.
+ 

@@ -11,9 +11,18 @@ spec:
     metadata:
       labels:
         component: web
+      annotations:
+        configHash: "1" # real config hash or commit id https://blog.questionable.services/article/kubernetes-deployments-configmap-change/
     spec:
       containers:
-        - name: client
+        - name: web-uat15
           image: lemartis/docker-spring-test
           ports:
             - containerPort: 8080
+          volumeMounts:
+            - name: config-volume
+              mountPath: /etc/config
+      volumes:
+        - name: config-volume
+          configMap:
+            name: config-uat15

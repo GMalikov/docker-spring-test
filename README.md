@@ -9,7 +9,7 @@ $> docker build -t docker-spring-test .
 Which will build an image and tag it with "docker-spring-test".
 
 To run image execute:
-$> docker run -p 8080:8080 docker-spring-test
+$> docker run -p 8080:8080 docker-spring-test [--name <container id>]
 
 This will run container, with port forwarding from localhost:8080 to containers 8080.
 
@@ -46,4 +46,8 @@ To access application first get your minikube ip:
  
  To delete pod/deployment:
  $> kubectl delete -f path-to-yaml-file.yaml
- 
+
+## ConfigMap
+kubectl create configmap config-uat15 --from-file=conf\application.properties --from-file=conf\uat15\application-spec.properties
+
+kubectl describe configmaps config-uat15

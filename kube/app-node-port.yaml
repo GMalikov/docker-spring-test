@@ -9,4 +9,4 @@ spec:
       targetPort: 8080
       nodePort: 31700
   selector:
-    component: web-uat15
+    component: web

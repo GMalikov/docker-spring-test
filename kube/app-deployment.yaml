@@ -6,23 +6,14 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      component: web-uat15
+      component: web
   template:
     metadata:
       labels:
-        component: web-uat15
-      annotations:
-        configHash: "1" # real config hash or commit id https://blog.questionable.services/article/kubernetes-deployments-configmap-change/
+        component: web
     spec:
       containers:
-        - name: web-uat15
+        - name: client
           image: lemartis/docker-spring-test
           ports:
             - containerPort: 8080
-          volumeMounts:
-            - name: config-volume
-              mountPath: /etc/config
-      volumes:
-        - name: config-volume
-          configMap:
-            name: config-uat15

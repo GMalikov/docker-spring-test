@@ -22,3 +22,70 @@
 2020-04-02 15:01:42,906 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
 2020-04-02 15:01:43,079 INFO org.springframework.boot.StartupInfoLogger [main] Started RestServiceApplicationTests in 1.307 seconds (JVM running for 1.973)
 2020-04-02 15:01:43,406 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [SpringContextShutdownHook] Shutting down ExecutorService 'applicationTaskExecutor'
+2020-04-12 16:35:43,393 INFO org.springframework.boot.StartupInfoLogger [main] Starting RestServiceApplicationTests on Glebs-MBP with PID 85830 (started by gleb in /Users/gleb/Projects/docker-spring-test)
+2020-04-12 16:35:43,395 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2020-04-12 16:35:44,278 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-12 16:35:44,470 INFO org.springframework.boot.StartupInfoLogger [main] Started RestServiceApplicationTests in 1.373 seconds (JVM running for 2.163)
+2020-04-12 16:35:44,867 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [SpringContextShutdownHook] Shutting down ExecutorService 'applicationTaskExecutor'
+2020-04-12 16:36:47,872 INFO org.springframework.boot.StartupInfoLogger [main] Starting RestServiceApplication on Glebs-MBP with PID 85845 (/Users/gleb/Projects/docker-spring-test/target/classes started by gleb in /Users/gleb/Projects/docker-spring-test)
+2020-04-12 16:36:47,874 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2020-04-12 16:36:48,553 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2020-04-12 16:36:48,560 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2020-04-12 16:36:48,561 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2020-04-12 16:36:48,561 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.29]
+2020-04-12 16:36:48,626 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2020-04-12 16:36:48,627 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 728 ms
+2020-04-12 16:36:48,773 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-12 16:36:48,887 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2020-04-12 16:36:48,907 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2020-04-12 16:36:48,910 INFO org.springframework.boot.StartupInfoLogger [main] Started RestServiceApplication in 1.313 seconds (JVM running for 1.806)
+2020-04-12 16:39:25,867 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-12 16:39:25,868 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2020-04-12 16:39:25,872 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 4 ms
+2020-04-12 16:39:25,891 INFO com.example.restservice.GreetingController [http-nio-8080-exec-1] An INFO Message
+2020-04-12 16:39:25,891 WARN com.example.restservice.GreetingController [http-nio-8080-exec-1] A WARN Message
+2020-04-12 16:39:25,891 ERROR com.example.restservice.GreetingController [http-nio-8080-exec-1] An ERROR Message
+2020-04-12 16:39:43,750 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [SpringContextShutdownHook] Shutting down ExecutorService 'applicationTaskExecutor'
+2020-04-12 16:50:21,214 INFO org.springframework.boot.StartupInfoLogger [main] Starting RestServiceApplicationTests on Glebs-MBP with PID 85898 (started by gleb in /Users/gleb/Projects/docker-spring-test)
+2020-04-12 16:50:21,216 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2020-04-12 16:50:22,045 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-12 16:50:22,222 INFO org.springframework.boot.StartupInfoLogger [main] Started RestServiceApplicationTests in 1.267 seconds (JVM running for 1.949)
+2020-04-12 16:50:22,540 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [SpringContextShutdownHook] Shutting down ExecutorService 'applicationTaskExecutor'
+2020-04-12 16:50:42,515 INFO org.springframework.boot.StartupInfoLogger [main] Starting RestServiceApplication on Glebs-MBP with PID 85907 (/Users/gleb/Projects/docker-spring-test/target/classes started by gleb in /Users/gleb/Projects/docker-spring-test)
+2020-04-12 16:50:42,517 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2020-04-12 16:50:43,186 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2020-04-12 16:50:43,193 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2020-04-12 16:50:43,194 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2020-04-12 16:50:43,194 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.29]
+2020-04-12 16:50:43,238 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2020-04-12 16:50:43,239 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 695 ms
+2020-04-12 16:50:43,334 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-12 16:50:43,413 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2020-04-12 16:50:43,432 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2020-04-12 16:50:43,436 INFO org.springframework.boot.StartupInfoLogger [main] Started RestServiceApplication in 1.145 seconds (JVM running for 1.523)
+2020-04-12 16:51:01,820 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-12 16:51:01,821 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2020-04-12 16:51:01,825 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 3 ms
+2020-04-12 16:51:01,842 INFO com.example.restservice.GreetingController [http-nio-8080-exec-1] A TRACE Message from buzzer unknown!
+2020-04-12 16:51:01,843 WARN com.example.restservice.GreetingController [http-nio-8080-exec-1] A TRACE Message from buzzer unknown!
+2020-04-12 16:51:01,843 ERROR com.example.restservice.GreetingController [http-nio-8080-exec-1] A TRACE Message from buzzer unknown!
+2020-04-12 16:51:26,324 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [SpringContextShutdownHook] Shutting down ExecutorService 'applicationTaskExecutor'
+2020-04-12 16:52:02,841 INFO org.springframework.boot.StartupInfoLogger [main] Starting RestServiceApplication on Glebs-MBP with PID 85916 (/Users/gleb/Projects/docker-spring-test/target/classes started by gleb in /Users/gleb/Projects/docker-spring-test)
+2020-04-12 16:52:02,843 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2020-04-12 16:52:03,478 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2020-04-12 16:52:03,483 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2020-04-12 16:52:03,484 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2020-04-12 16:52:03,484 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.29]
+2020-04-12 16:52:03,531 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2020-04-12 16:52:03,531 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 663 ms
+2020-04-12 16:52:03,618 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-12 16:52:03,696 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2020-04-12 16:52:03,717 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2020-04-12 16:52:03,721 INFO org.springframework.boot.StartupInfoLogger [main] Started RestServiceApplication in 1.097 seconds (JVM running for 1.479)
+2020-04-12 16:52:09,144 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-12 16:52:09,145 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2020-04-12 16:52:09,149 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 4 ms
+2020-04-12 16:52:09,164 INFO com.example.restservice.GreetingController [http-nio-8080-exec-1] A TRACE Message from buzzer 'buzzer A'!
+2020-04-12 16:52:09,164 WARN com.example.restservice.GreetingController [http-nio-8080-exec-1] A TRACE Message from buzzer 'buzzer A'!
+2020-04-12 16:52:09,164 ERROR com.example.restservice.GreetingController [http-nio-8080-exec-1] A TRACE Message from buzzer 'buzzer A'!
+2020-04-12 16:52:21,356 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [SpringContextShutdownHook] Shutting down ExecutorService 'applicationTaskExecutor'

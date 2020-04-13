@@ -49,14 +49,17 @@ To access application first get your minikube ip:
 
 ## ConfigMap
 kubectl create configmap config-uat15 --from-file=conf\application.properties --from-file=conf\uat15\application-spec.properties
+
 kubectl describe configmaps config-uat15
 
-kubectl apply -f app.yaml
+kubectl apply -f app.yaml [--record -to rllback kubectl rollout history/undo deployment <name>]
 
 kubectl get pods
+
 kubectl get svc
 
 kubectl exec -it uat15-pod -- /bin/sh
+kubectl exec -it uat16-depl-69d8fcf8c8-472ws -- /bin/sh
 
 kubectl port-forward uat15-pod 8080:81
 

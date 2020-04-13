@@ -9,7 +9,7 @@ spec:
 #  subdomain: uat15
   containers:
     - name: bright-etl-uat15-cnt
-      image: ikozar22/ikozar
+      image: ikozar22/docker-spring-test
       volumeMounts:
           - name: bright-etl-uat15-vol
             mountPath: /etc/config
@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
         - name: bright-etl-uat16-cnt
-          image: ikozar22/ikozar
+          image: ikozar22/docker-spring-test
           volumeMounts:
             - name: bright-etl-uat16-vol
               mountPath: /etc/config

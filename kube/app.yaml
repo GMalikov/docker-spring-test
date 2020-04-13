@@ -5,8 +5,8 @@ metadata:
   labels:
     app: bright-etl-uat15
 spec:
-  hostname: uat15-pod-host
-  subdomain: uat15
+#  hostname: uat15-pod-host
+#  subdomain: uat15
   containers:
     - name: bright-etl-uat15-cnt
       image: ikozar22/ikozar

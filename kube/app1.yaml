@@ -1,0 +1,96 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: uat15-pod
+  labels:
+    app: bright-etl-uat15
+spec:
+#  hostname: uat15-pod-host
+#  subdomain: uat15
+  containers:
+    - name: bright-etl-uat15-cnt
+      image: ikozar22/ikozar
+      volumeMounts:
+          - name: bright-etl-uat15-vol
+            mountPath: /etc/config
+  volumes:
+    - name: bright-etl-uat15-vol
+      configMap:
+        name: config-uat15
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: uat16-depl
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: bright-etl-uat16
+  template:
+    metadata:
+      labels:
+        app: bright-etl-uat16
+    spec:
+      containers:
+        - name: bright-etl-uat16-cnt
+          image: ikozar22/ikozar
+          volumeMounts:
+            - name: bright-etl-uat16-vol
+              mountPath: /etc/config
+      volumes:
+        - name: bright-etl-uat16-vol
+          configMap:
+            name: config-uat16
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bright-etl-uat15-srv
+spec:
+#  type: ClusterIP
+  type: NodePort
+  ports:
+    - name: bright-etl-uat15-port
+      port: 8080
+      targetPort: 8080
+      nodePort: 30001
+  selector:
+    app: bright-etl-uat15
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bright-etl-uat16-srv
+spec:
+#  type: ClusterIP
+  type: NodePort
+  ports:
+    - name: bright-etl-uat16-port
+      port: 8080
+      targetPort: 8080
+      nodePort: 30002
+  selector:
+    app: bright-etl-uat16
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: bright-ingress
+spec:
+#  backend:
+#    serviceName: bright-ingress-srv
+#    servicePort: 8080
+  rules:
+    - host: etl.uat15.bnp.com
+      http:
+        paths:
+          - backend:
+              serviceName: bright-etl-uat15-srv
+              servicePort: 8080
+    - host: etl.uat16.bnp.com
+      http:
+        paths:
+          - backend:
+              serviceName: bright-etl-uat16-srv
+              servicePort: 8080

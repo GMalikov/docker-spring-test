@@ -36,6 +36,9 @@ public class GreetingController {
     @Value("${over.prop1:undefined}")
     private String overProp1;
 
+    @Value("${dev2.host:app-dev1-port}")
+    private String dev2Host;
+
     private final HttpClient httpClient = HttpClient.newBuilder()
             .version(HttpClient.Version.HTTP_2)
             .build();
@@ -68,7 +71,7 @@ public class GreetingController {
 
         HttpRequest request = HttpRequest.newBuilder()
                 .GET()
-                .uri(URI.create("http://localhost:8080/test"))
+                .uri(URI.create("http://" + dev2Host + ":8080/greeting"))
                 .setHeader("User-Agent", "Java 11 HttpClient Bot") // add request header
                 .build();
 

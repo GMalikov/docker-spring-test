@@ -3,7 +3,6 @@ package com.example.restservice;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,9 +17,8 @@ import java.util.concurrent.atomic.AtomicLong;
         @PropertySource("file:${confDir:/etc/config}/application.properties"),
         @PropertySource("file:${confDir:/etc/config}/application-spec.properties")
 })
-@RefreshScope
 public class GreetingController {
-    private static final String template = "Hello, %s. Test config values: base- %s, spec- %s, over- %s !";
+    private static final String template = "Hello from dev2 %d, %s. Test config values: base- %s, spec- %s, over- %s !";
     private final AtomicLong counter = new AtomicLong();
     Logger logger = LoggerFactory.getLogger(GreetingController.class);
 
@@ -39,24 +37,16 @@ public class GreetingController {
     }
 
     private String makeMsg(String name) {
-        return String.format(template, name, baseProp1, specProp1, overProp1);
+        return String.format(template, counter.incrementAndGet(), name, baseProp1, specProp1, overProp1);
     }
-
-/*
-    @GetMapping("/refresh")
-    public String refresh() {
-        refresh();
-        return makeMsg("refresh");
-    }
-*/
 
     @GetMapping("/greeting")
-    public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
+    public String greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
         logger.trace("A TRACE Message");
         logger.debug("A DEBUG Message");
         logger.info("An INFO Message");
         logger.warn("A WARN Message");
         logger.error("An ERROR Message");
-        return new Greeting(counter.incrementAndGet(), makeMsg(name));
+        return makeMsg(name);
     }
 }

@@ -59,12 +59,16 @@ kubectl get svc
 kubectl exec -it uat15-pod -- /bin/sh
 
 kubectl port-forward uat15-pod 8080:81
+
 curl http://localhost:81/greeting
 
 ## Ingress
 minikube addons enable ingress
 
 add to /etc/hosts
+
 172.17.50.30 etl.uat15.bnp.com
+
 172.17.50.30 etl.uat16.bnp.com
+
 curl http://etl.uat15.bnp.com/greeting

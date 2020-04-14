@@ -17,7 +17,6 @@ import javax.annotation.PostConstruct;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.URI;
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
@@ -25,10 +24,10 @@ import java.util.concurrent.atomic.AtomicLong;
         @PropertySource("file:${confDir:/etc/config}/application.properties"),
         @PropertySource("file:${confDir:/etc/config}/application-spec.properties")
 })
-public class GreetingController {
+public class GreetingControllerDev1 {
     private static final String template = "Hello, %s. Test config values: base- %s, spec- %s, over- %s !";
     private final AtomicLong counter = new AtomicLong();
-    Logger logger = LoggerFactory.getLogger(GreetingController.class);
+    Logger logger = LoggerFactory.getLogger(GreetingControllerDev1.class);
 
     @Value("${base.prop1:undefined}")
     private String baseProp1;

@@ -27,22 +27,38 @@ spec:
       port: 8080
       targetPort: 8080
   selector:
-    app: bright-etl-uat15
+    app: app-dev1
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-dev2-pod
+  labels:
+    app: app-dev2
+spec:
+  containers:
+    - name: app-dev2-cnt
+      image: ikozar22/docker-spring-test:dev2-tag
+      volumeMounts:
+          - name: app-dev2-vol
+            mountPath: /etc/config
+  volumes:
+    - name: app-dev2-vol
+      configMap:
+        name: config-dev2
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: bright-etl-uat16-srv
+  name: app-dev2-srv
 spec:
-#  type: ClusterIP
-  type: NodePort
+  type: ClusterIP
   ports:
-    - name: bright-etl-uat16-port
+    - name: app-dev2-port
       port: 8080
       targetPort: 8080
-      nodePort: 30002
   selector:
-    app: bright-etl-uat16
+    app: app-dev2
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -53,15 +69,14 @@ spec:
 #    serviceName: bright-ingress-srv
 #    servicePort: 8080
   rules:
-    - host: etl.uat15.bnp.com
+    - host: uat15.bnp.com
       http:
         paths:
-          - backend:
-              serviceName: bright-etl-uat15-srv
+          - path: /etl/*
+            backend:
+              serviceName: app-dev1-srv
               servicePort: 8080
-    - host: etl.uat16.bnp.com
-      http:
-        paths:
-          - backend:
-              serviceName: bright-etl-uat16-srv
+          - path: /rt/*
+            backend:
+              serviceName: app-dev2-srv
               servicePort: 8080

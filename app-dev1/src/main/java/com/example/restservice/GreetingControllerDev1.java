@@ -75,7 +75,7 @@ public class GreetingControllerDev1 {
 
     @GetMapping("/{someUrl}/{someUrl1}")
     public String testUrl1(@PathVariable(value="someUrl") String someUrl,
-                           @PathVariable(value="someUrl") String someUrl1) {
+                           @PathVariable(value="someUrl1") String someUrl1) {
         return someUrl + "-/-" + someUrl1;
     }
 

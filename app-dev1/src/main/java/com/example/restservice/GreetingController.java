@@ -1,5 +1,9 @@
 package com.example.restservice;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -10,11 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
@@ -36,12 +39,10 @@ public class GreetingController {
     @Value("${over.prop1:undefined}")
     private String overProp1;
 
-    @Value("${dev2.host:app-dev1-port}")
-    private String dev2Host;
+    @Value("${dev2.url:app-dev1-port:8080/greeting}")
+    private String dev2Url;
 
-    private final HttpClient httpClient = HttpClient.newBuilder()
-            .version(HttpClient.Version.HTTP_2)
-            .build();
+    private final HttpClient httpClient = new DefaultHttpClient();
 
     @PostConstruct
     public void init() {
@@ -69,19 +70,9 @@ public class GreetingController {
 
     private String getDev2Greeting() throws IOException, InterruptedException {
 
-        HttpRequest request = HttpRequest.newBuilder()
-                .GET()
-                .uri(URI.create("http://" + dev2Host + ":8080/greeting"))
-                .setHeader("User-Agent", "Java 11 HttpClient Bot") // add request header
-                .build();
-
-
-        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-//        HttpHeaders headers = response.headers();
-//        headers.map().forEach((k, v) -> System.out.println(k + ":" + v));
-//        response.statusCode();
-
-        // print response body
-        return response.body();
+        HttpGet request = new HttpGet("http://" + dev2Url);
+        HttpResponse response = httpClient.execute(request);
+        BufferedReader rd = new BufferedReader (new InputStreamReader(response.getEntity().getContent()));
+        return rd.readLine();
 
     }}

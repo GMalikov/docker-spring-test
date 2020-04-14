@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk11:alpine-jre
+FROM openjdk:8-jdk-alpine
 VOLUME /tmp
 COPY app-dev1/target/*.jar app.jar
 RUN mkdir logs && touch /logs/spring-boot-logger.log

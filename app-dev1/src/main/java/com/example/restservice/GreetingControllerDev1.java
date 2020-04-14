@@ -38,13 +38,18 @@ public class GreetingControllerDev1 {
     @Value("${over.prop1:undefined}")
     private String overProp1;
 
-    @Value("${dev2.url:app-dev1-port:8080/greeting}")
+    @Value("${dev2.url:app-dev1-srv:8080/greeting}")
     private String dev2Url;
 
     private final HttpClient httpClient = new DefaultHttpClient();
 
     @PostConstruct
     public void init() {
+        logger.trace("A TRACE Message");
+        logger.debug("A DEBUG Message");
+        logger.info("An INFO Message");
+        logger.warn("A WARN Message");
+        logger.error("An ERROR Message");
         logger.info(makeMsg("TEST"));
     }
 
@@ -54,11 +59,6 @@ public class GreetingControllerDev1 {
 
     @GetMapping("/greeting")
     public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) throws IOException, InterruptedException {
-        logger.trace("A TRACE Message");
-        logger.debug("A DEBUG Message");
-        logger.info("An INFO Message");
-        logger.warn("A WARN Message");
-        logger.error("An ERROR Message");
         return new Greeting(counter.incrementAndGet(), makeMsg(name), getDev2Greeting());
     }
 
@@ -68,8 +68,9 @@ public class GreetingControllerDev1 {
     }
 
     private String getDev2Greeting() throws IOException, InterruptedException {
-
-        HttpGet request = new HttpGet("http://" + dev2Url);
+        String url = "http://" + dev2Url;
+        logger.info("Request app-dev2 by URL :" + url);
+        HttpGet request = new HttpGet(url);
         HttpResponse response = httpClient.execute(request);
         BufferedReader rd = new BufferedReader (new InputStreamReader(response.getEntity().getContent()));
         return rd.readLine();

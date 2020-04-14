@@ -7,10 +7,13 @@ metadata:
 spec:
   containers:
     - name: app-dev1-cnt
-      image: ikozar22/docker-spring-test:dev1-tag
+      image: ikozar22/docker-spring-test:dev1-latest
       volumeMounts:
           - name: app-dev1-vol
             mountPath: /etc/config
+      env:
+        - name: dev2.url
+          value: app-dev1-srv
   volumes:
     - name: app-dev1-vol
       configMap:
@@ -38,7 +41,7 @@ metadata:
 spec:
   containers:
     - name: app-dev2-cnt
-      image: ikozar22/docker-spring-test:dev2-tag
+      image: ikozar22/docker-spring-test:dev2-latest
       volumeMounts:
           - name: app-dev2-vol
             mountPath: /etc/config

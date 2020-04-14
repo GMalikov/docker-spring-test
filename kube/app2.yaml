@@ -7,13 +7,13 @@ metadata:
 spec:
   containers:
     - name: app-dev1-cnt
-      image: ikozar22/docker-spring-test:dev1-latest
+      image: ikozar22/docker-spring-test:latest
       volumeMounts:
           - name: app-dev1-vol
             mountPath: /etc/config
       env:
         - name: dev2.url
-          value: app-dev1-srv
+          value: app-dev2-srv:8080/greeting
   volumes:
     - name: app-dev1-vol
       configMap:
@@ -25,12 +25,13 @@ metadata:
   name: app-dev1-srv
 spec:
   type: ClusterIP
-  ports:
-    - name: app-dev1-port
-      port: 8080
-      targetPort: 8080
   selector:
     app: app-dev1
+#  clusterIP: None
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
 ---
 apiVersion: v1
 kind: Pod
@@ -41,10 +42,13 @@ metadata:
 spec:
   containers:
     - name: app-dev2-cnt
-      image: ikozar22/docker-spring-test:dev2-latest
+      image: ikozar22/docker-spring-test2:latest
       volumeMounts:
           - name: app-dev2-vol
             mountPath: /etc/config
+      env:
+        - name: over.prop1
+          value: over-uat15-prop1-value-from-env
   volumes:
     - name: app-dev2-vol
       configMap:
@@ -68,9 +72,9 @@ kind: Ingress
 metadata:
   name: bright-ingress
 spec:
-#  backend:
-#    serviceName: bright-ingress-srv
-#    servicePort: 8080
+  backend:
+    serviceName: app-dev1-srv
+    servicePort: 8080
   rules:
     - host: uat15.bnp.com
       http:

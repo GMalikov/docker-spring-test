@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: bright-ingress
+spec:
+  backend:
+    serviceName: app-dev1-srv
+    servicePort: 8080
+  rules:
+    - host: uat15.bnp.com
+      http:
+        paths:
+          - path: /etl(/|$)(.*)
+            backend:
+              serviceName: app-dev1-srv
+              servicePort: 8080
+          - path: /rt(/|$)(.*)
+            backend:
+              serviceName: app-dev2-srv
+              servicePort: 8080

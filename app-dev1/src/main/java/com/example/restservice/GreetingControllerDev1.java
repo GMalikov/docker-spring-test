@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -38,7 +39,7 @@ public class GreetingControllerDev1 {
     @Value("${over.prop1:undefined}")
     private String overProp1;
 
-    @Value("${dev2.url:app-dev1-srv:8080/greeting}")
+    @Value("${dev2.url:app-dev2-srv:8080/greeting}")
     private String dev2Url;
 
     private final HttpClient httpClient = new DefaultHttpClient();
@@ -65,6 +66,17 @@ public class GreetingControllerDev1 {
     @GetMapping("/test")
     public String test() {
         return "Test!!!";
+    }
+
+    @GetMapping("/{someUrl}")
+    public String testUrl(@PathVariable(value="someUrl") String someUrl) {
+        return someUrl;
+    }
+
+    @GetMapping("/{someUrl}/{someUrl1}")
+    public String testUrl1(@PathVariable(value="someUrl") String someUrl,
+                           @PathVariable(value="someUrl") String someUrl1) {
+        return someUrl + "-/-" + someUrl1;
     }
 
     private String getDev2Greeting() throws IOException, InterruptedException {

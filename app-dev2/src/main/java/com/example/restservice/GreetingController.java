@@ -15,7 +15,8 @@ import java.util.concurrent.atomic.AtomicLong;
 @RestController
 @PropertySources({
         @PropertySource("file:${confDir:/etc/config}/application.properties"),
-        @PropertySource("file:${confDir:/etc/config}/application-spec.properties")
+        @PropertySource("file:${confDirEnv:/etc/config}/application-dev2.properties"),
+        @PropertySource("file:${confDirEnv:/etc/config}/application-spec.properties")
 })
 public class GreetingController {
     private static final String template = "Hello from dev2 %d, %s. Test config values: base- %s, spec- %s, over- %s !";

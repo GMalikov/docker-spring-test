@@ -48,7 +48,7 @@ spec:
             mountPath: /etc/config
       env:
         - name: over.prop1
-          value: over-uat15-prop1-value-from-env
+          value: over-dev2-prop1-value-from-env
   volumes:
     - name: app-dev2-vol
       configMap:
@@ -67,23 +67,25 @@ spec:
   selector:
     app: app-dev2
 ---
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: bright-ingress
-spec:
-  backend:
-    serviceName: app-dev1-srv
-    servicePort: 8080
-  rules:
-    - host: uat15.bnp.com
-      http:
-        paths:
-          - path: /etl/*
-            backend:
-              serviceName: app-dev1-srv
-              servicePort: 8080
-          - path: /rt/*
-            backend:
-              serviceName: app-dev2-srv
-              servicePort: 8080
+#apiVersion: extensions/v1beta1
+#kind: Ingress
+#metadata:
+#  name: bright-ingress
+#  annotations:
+#    nginx.ingress.kubernetes.io/rewrite-target: /$1
+#spec:
+#  backend:
+#    serviceName: app-dev1-srv
+#    servicePort: 8080
+#  rules:
+#    - host: uat15.bnp.com
+#      http:
+#        paths:
+#          - path: /etl/(.*)
+#            backend:
+#              serviceName: app-dev1-srv
+#              servicePort: 8080
+#          - path: /rt/(.*)
+#            backend:
+#              serviceName: app-dev2-srv
+#              servicePort: 8080

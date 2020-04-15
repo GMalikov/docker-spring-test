@@ -2,6 +2,9 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: bright-ingress
+  namespace: uat15
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
 spec:
   backend:
     serviceName: app-dev1-srv
@@ -10,11 +13,35 @@ spec:
     - host: uat15.bnp.com
       http:
         paths:
-          - path: /etl(/|$)(.*)
+          - path: /etl/(.*)
             backend:
               serviceName: app-dev1-srv
               servicePort: 8080
-          - path: /rt(/|$)(.*)
+          - path: /rt/(.*)
+            backend:
+              serviceName: app-dev2-srv
+              servicePort: 8080
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: bright-ingress
+  namespace: uat16
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  backend:
+    serviceName: app-dev1-srv
+    servicePort: 8080
+  rules:
+    - host: uat16.bnp.com
+      http:
+        paths:
+          - path: /etl/(.*)
+            backend:
+              serviceName: app-dev1-srv
+              servicePort: 8080
+          - path: /rt/(.*)
             backend:
               serviceName: app-dev2-srv
               servicePort: 8080

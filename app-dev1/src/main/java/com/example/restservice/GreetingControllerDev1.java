@@ -68,17 +68,6 @@ public class GreetingControllerDev1 {
         return "Test!!!";
     }
 
-    @GetMapping("/{someUrl}")
-    public String testUrl(@PathVariable(value="someUrl") String someUrl) {
-        return someUrl;
-    }
-
-    @GetMapping("/{someUrl}/{someUrl1}")
-    public String testUrl1(@PathVariable(value="someUrl") String someUrl,
-                           @PathVariable(value="someUrl1") String someUrl1) {
-        return someUrl + "-/-" + someUrl1;
-    }
-
     private String getDev2Greeting() throws IOException, InterruptedException {
         String url = "http://" + dev2Url;
         logger.info("Request app-dev2 by URL :" + url);

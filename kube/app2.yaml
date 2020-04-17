@@ -78,14 +78,14 @@ spec:
 #    serviceName: app-dev1-srv
 #    servicePort: 8080
 #  rules:
-#    - host: uat15.bnp.com
+#    - host: to-replace
 #      http:
 #        paths:
-#          - path: /etl/(.*)
+#          - path: /dev1/(.*)
 #            backend:
 #              serviceName: app-dev1-srv
 #              servicePort: 8080
-#          - path: /rt/(.*)
+#          - path: /dev2/(.*)
 #            backend:
 #              serviceName: app-dev2-srv
 #              servicePort: 8080

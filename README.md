@@ -12,8 +12,8 @@ use -DconfDir=conf -DconfDirEnv=conf/uat15
 
 ## test case
 
-* change some properties - modify prop file[s], delete and create configmap or "kubectl edit configmap config-dev1 -n uat15"
-* check that properties are updated - "kubectl exec -it app-dev1-pod -n uat15 -- cat /etc/config/<property file>"
+* change some properties - modify prop file[s], delete and create configmap or "kubectl edit configmap config-app1 -n uat15"
+* check that properties are updated - "kubectl exec -it app1-pod -n uat15 -- cat /etc/config/<property file>"
 * check app uses old properties - http://uat15.bnp.com/dev1/actuator/env
-* restart dev1 app - "kubectl exec -it app-dev1-pod -n uat15 -- kill 1"
+* restart dev1 app - "kubectl exec -it app1-pod -n uat15 -- kill 1"
 * check app uses new properties - http://uat15.bnp.com/dev1/actuator/env

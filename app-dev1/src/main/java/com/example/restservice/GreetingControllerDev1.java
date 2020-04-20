@@ -23,8 +23,9 @@ import java.util.concurrent.atomic.AtomicLong;
 @RestController
 @PropertySources({
         @PropertySource("file:${confDir:/etc/config}/application.properties"),
-        @PropertySource("file:${confDir:/etc/config}/application-dev1.properties"),
-        @PropertySource("file:${confDirEnv:/etc/config}/application-spec.properties")
+        @PropertySource("file:${confDir:/etc/config}/application-app1.properties"),
+        @PropertySource("file:${confDirEnv:/etc/config}/application-spec.properties"),
+        @PropertySource("git.properties")
 })
 public class GreetingControllerDev1 {
     private static final String template = "Hello, %s. Test config values: base- %s, spec- %s, over- %s !";
@@ -40,7 +41,7 @@ public class GreetingControllerDev1 {
     @Value("${over.prop1:undefined}")
     private String overProp1;
 
-    @Value("${dev2.url:app-dev2-srv:8080/greeting}")
+    @Value("${dev2.url:app-app2-srv:8080/greeting}")
     private String dev2Url;
 
     private final HttpClient httpClient = new DefaultHttpClient();
@@ -71,7 +72,7 @@ public class GreetingControllerDev1 {
 
     private String getDev2Greeting() throws IOException, InterruptedException {
         String url = "http://" + dev2Url;
-        logger.info("Request app-dev2 by URL :" + url);
+        logger.info("Request app2 by URL :" + url);
         HttpGet request = new HttpGet(url);
         HttpResponse response = httpClient.execute(request);
         BufferedReader rd = new BufferedReader (new InputStreamReader(response.getEntity().getContent()));

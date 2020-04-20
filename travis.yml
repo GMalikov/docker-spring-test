@@ -1,9 +1,0 @@
-sudo: required
-services:
-  - docker
-
-before_install:
-  - docker build -t ikozar/docker-spring-test -f Dockerfile-dev1 .
-
-script:
-  - docker run -e CI=true ikozar/docker-spring-test

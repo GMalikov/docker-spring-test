@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app1-pod
+  labels:
+    app: app1
+spec:
+  containers:
+    - name: app1-cnt
+      image: ikozar22/docker-spring-test:latest
+      volumeMounts:
+          - name: app1-vol
+            mountPath: /etc/config
+      env:
+        - name: app2.url
+          value: app2-srv:8080/greeting
+  volumes:
+    - name: app1-vol
+      configMap:
+        name: config-app1
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app2-pod
+  labels:
+    app: app2
+spec:
+  containers:
+    - name: app2-cnt
+      image: ikozar22/docker-spring-test2:latest
+      volumeMounts:
+          - name: app2-vol
+            mountPath: /etc/config
+      env:
+        - name: over.prop1
+          value: over-app2-prop1-value-from-env
+  volumes:
+    - name: app2-vol
+      configMap:
+        name: config-app2

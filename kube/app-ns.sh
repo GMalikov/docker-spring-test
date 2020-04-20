@@ -1,4 +1,4 @@
-# params 1 - namespace, 2 - git branch or commit
+# params 1 - namespace
 
 kubectl delete configmap --all -n $1
 kubectl delete pod --all -n $1

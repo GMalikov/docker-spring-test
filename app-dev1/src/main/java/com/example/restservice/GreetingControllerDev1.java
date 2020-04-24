@@ -25,7 +25,8 @@ import java.util.concurrent.atomic.AtomicLong;
         @PropertySource("file:${confDir:/etc/config}/application.properties"),
         @PropertySource("file:${confDir:/etc/config}/application-app1.properties"),
         @PropertySource("file:${confDirEnv:/etc/config}/application-spec.properties"),
-        @PropertySource("git.properties")
+        @PropertySource("git.properties"),
+        @PropertySource("file:${secretDirEnv:/etc/secret}/secret.properties")
 })
 public class GreetingControllerDev1 {
     private static final String template = "Hello, %s. Test config values: base- %s, spec- %s, over- %s !";
@@ -48,6 +49,8 @@ public class GreetingControllerDev1 {
 
     @PostConstruct
     public void init() {
+//        System.setProperties("javax.net.ssl.keyStore");
+
         logger.trace("A TRACE Message");
         logger.debug("A DEBUG Message");
         logger.info("An INFO Message");

@@ -9,15 +9,21 @@ spec:
     - name: app1-cnt
       image: ikozar22/docker-spring-test:latest
       volumeMounts:
-          - name: app1-vol
+          - name: app1-cfg
             mountPath: /etc/config
+          - name: app1-sec
+            mountPath: /etc/secret
+            readOnly: true
       env:
         - name: app2.url
           value: app2-srv:8080/greeting
   volumes:
-    - name: app1-vol
+    - name: app1-cfg
       configMap:
         name: config-app1
+    - name: app1-sec
+      secret:
+        secretName: secret-app1
 ---
 apiVersion: v1
 kind: Pod
@@ -30,12 +36,12 @@ spec:
     - name: app2-cnt
       image: ikozar22/docker-spring-test2:latest
       volumeMounts:
-          - name: app2-vol
+          - name: app2-cfg
             mountPath: /etc/config
       env:
         - name: over.prop1
           value: over-app2-prop1-value-from-env
   volumes:
-    - name: app2-vol
+    - name: app2-cfg
       configMap:
         name: config-app2

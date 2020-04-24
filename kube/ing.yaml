@@ -16,7 +16,7 @@ spec:
             backend:
               serviceName: app1-srv
               servicePort: 8080
-          - path: /dev2/(.*)
+          - path: /app2/(.*)
             backend:
               serviceName: app2-srv
               servicePort: 8080

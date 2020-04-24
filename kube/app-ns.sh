@@ -3,6 +3,7 @@
 kubectl delete configmap --all -n $1
 kubectl delete pod --all -n $1
 kubectl delete svc --all -n $1
+kubectl delete secret secret-app1 -n $1
 
 kubectl create configmap config-app1  -n $1 \
     --from-file=conf/application.properties \
@@ -12,6 +13,10 @@ kubectl create configmap config-app1  -n $1 \
 kubectl create configmap config-app2  -n $1 \
     --from-file=conf/application.properties \
     --from-file=conf/$1/
+
+kubectl create secret generic secret-app1  -n $1 \
+    --from-file=secret/$1/secret.properties \
+    --from-file=secret/$1/app1.p12
 
 kubectl apply -f kube/pod.yaml -n $1
 kubectl apply -f kube/svc.yaml -n $1
